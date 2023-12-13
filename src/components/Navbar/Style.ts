@@ -27,11 +27,3 @@ export const NavTitle = styled.div`
         font-weight: 700;
     }
 `
-export const NavMenu = styled.ul`
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-`
-export const NavItem = styled.li`
-    font-weight: bold;
-`
