@@ -16,6 +16,8 @@ export const GlobalStyles = createGlobalStyle`
     body {
         font-family: 'Nunito Sans', sans-serif;
         letter-spacing: 1px;
+        background-color: #d6ecff;
+        color: #000;
     }
     img, video, picture, canvas, svg {
         display: block;
