@@ -7,11 +7,13 @@ import AccountPage from "./Account/Account"
 import OthersPage from "./Others/Others"
 import NoMatchPage from "./NoMatch/NoMatch"
 import ProductDetailPage from "./ProductDetail/ProductDetail"
+import Navbar from "../components/Navbar/Navbar"
 
 const Pages = () => {
   return (
-    <>
-        <PageWrapper>
+    <PageWrapper>
+        <Navbar />
+        <Page>
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/products" element={<ProductsPage />} />
@@ -21,13 +23,20 @@ const Pages = () => {
                 <Route path="/others" element={<OthersPage />} />
                 <Route path="*" element={<NoMatchPage />} />
             </Routes>
-        </PageWrapper>
-    </>
+        </Page>
+    </PageWrapper>
   )
 }
 
 export default Pages
 
 const PageWrapper = styled.main`
-    height: 100%;
+    min-height: 100%;
+    background-color: red;
+    padding: 10px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+`
+const Page = styled.div`
+    background-color: blue;
 `
