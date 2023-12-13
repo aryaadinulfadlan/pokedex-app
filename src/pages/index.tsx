@@ -32,11 +32,18 @@ export default Pages
 
 const PageWrapper = styled.main`
     min-height: 100%;
-    background-color: red;
-    padding: 10px;
     display: grid;
     grid-template-rows: auto 1fr;
+    /* background-color: red;
+    padding: 10px; */
 `
 const Page = styled.div`
-    background-color: blue;
+    /* background-color: blue; */
+    padding: 0 1rem;
+`
+export const PageWrap = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { Nav, NavTitle, NavWrapper } from "./Style"
+import { Nav, NavTitle, NavWrapper } from "./NavStyle"
 import { useState } from "react"
 import BarButton from "../BarButton"
 import Sidebar from "../Sidebar/Sidebar"
@@ -14,7 +14,7 @@ const Navbar = () => {
         <NavWrapper>
             <NavTitle onClick={goToHome}>
                 <img src="/favicon.png" alt="Pokedex" />
-                <span>Pokedex App</span>
+                <span>Pokedex</span>
             </NavTitle>
             <BarButton toggleShow={toggleShow} />
             <Sidebar show={show} setShow={setShow} />

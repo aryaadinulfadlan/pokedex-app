@@ -1,6 +1,10 @@
+import { PageWrap } from ".."
+
 const AccountPage = () => {
   return (
-    <div>AccountPage</div>
+    <PageWrap>
+      <h1>Account Page</h1>
+    </PageWrap>
   )
 }
 

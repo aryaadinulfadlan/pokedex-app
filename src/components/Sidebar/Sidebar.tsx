@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
-import { CloseIcon, NavItem, NavMenu, SidebarContainer } from "./Style"
+import { CloseIcon, NavItem, NavMenu, SidebarContainer } from "./SideStyle"
 import { useNavigate } from "react-router-dom"
 
 type SidebarProps = {

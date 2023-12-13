@@ -35,3 +35,9 @@ export const GlobalStyles = createGlobalStyle`
         color: inherit;
     }
 `
+
+export const FontSize1 = 'clamp(0.9rem, 0.7962rem + 0.4615vw, 1.2rem)'
+export const FontSize2 = 'clamp(0.9rem, 0.7615rem + 0.6154vw, 1.3rem)'
+export const FontSize3 = 'clamp(0.9rem, 0.7269rem + 0.7692vw, 1.4rem)'
+export const FontSize10 = 'clamp(1.3rem, 0.9538rem + 1.5385vw, 2.3rem)'
+export const LogoFontSize = 'clamp(1.6rem, 1.3577rem + 1.0769vw, 2.3rem)'
