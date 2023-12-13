@@ -1,7 +1,7 @@
 import axiosClient from "./axiosClient"
 
 export const getPokemonList = (offset: string) => {
-    const url = `pokemon/?offset=${offset}&limit=8`
+    const url = `pokemon/?offset=${offset}&limit=3`
     return axiosClient.get(url)
 }
 
