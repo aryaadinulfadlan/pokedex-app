@@ -1,8 +1,8 @@
 import { Pokemon } from "../../pages/Products/types"
 import { BottomContent, Card, DescWrapper, ImgWrapper, TopContent } from "./ProductCardStyle"
 
-const ProductCard = ({ name, weight, height, images, abilities, types }: Pokemon) => {
-  const [ mainImage, ...restImage ] = images
+const ProductCard = ({ name, images, abilities, types }: Pokemon) => {
+  const [ mainImage ] = images
   return (
     <Card>
         <ImgWrapper>
