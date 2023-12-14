@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
 import { getPokemonTypes } from "../api/pokemon"
+import { usePokemonTypes } from "../stores/pokemon"
 
 type Result = {
     name: string
@@ -8,14 +9,14 @@ type Result = {
 }
 
 const ProductFilter = () => {
-  const [types, setTypes] = useState<string[]>([])
+  const { pokemonTypes, setPokemonTypes } = usePokemonTypes()
   const [activeType, setActiveType] = useState('')
 
   const getPokemonType = useCallback(async () => {
     try {
         const { status, data: { results } }: { status: number, data: { results: Result[] } } = await getPokemonTypes()
         if (status === 200) {
-            setTypes(results.map(el => el.name))
+            setPokemonTypes(results.map(el => el.name))
         } else {
             alert('An error occured')
         }
@@ -30,11 +31,10 @@ const ProductFilter = () => {
     getPokemonType()
   }, [getPokemonType])
 
-  console.log({types})
   return (
     <FilterWrap>
         {
-            types.map(el => <span onClick={() => handleActiveType(el)} className={el === activeType ? 'active' : ''} key={el}>{el}</span>)
+            pokemonTypes.map(el => <span onClick={() => handleActiveType(el)} className={el === activeType ? 'active' : ''} key={el}>{el}</span>)
         }
         <span onClick={handleReset} className={activeType === '' ? 'active' : ''}>All</span>
     </FilterWrap>

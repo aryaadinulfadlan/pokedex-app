@@ -1,13 +1,14 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect } from "react"
 import ProductCard from "../../components/ProductCard/ProductCard"
 import ProductSearch from "../../components/ProductSearch"
 import { ProductContainer, ProductList } from "./ProductStyle"
 import { getPokemon, getPokemonList } from "../../api/pokemon"
 import { Data, Image, Pokemon, PokemonAbility, PokemonStats, PokemonType, Stats } from "./types"
 import ProductFilter from "../../components/ProductFilter"
+import { usePokemon } from "../../stores/pokemon"
 
 const ProductsPage = () => {
-  const [pokemonList, setPokemonList] = useState<Pokemon[]>([])
+  const { pokemon, filteredOrSearchedPokemon, pokemonSelectedID, setPokemon } = usePokemon()
 
   const getData = useCallback(async () => {
     try {
@@ -68,7 +69,7 @@ const ProductsPage = () => {
               newData = { ...newData, images }
             }
           }
-          setPokemonList(prev => ([ ...prev, newData ]))
+          setPokemon(newData)
         } else {
           alert('An error occured')
         }
@@ -82,14 +83,14 @@ const ProductsPage = () => {
     getData()
   }, [getData])
 
-  console.log({pokemonList})
+  console.log({pokemon, pokemonSelectedID, filteredOrSearchedPokemon})
   return (
     <ProductContainer>
       <ProductSearch />
       <ProductFilter />
       <ProductList>
         {
-          pokemonList.map(el => <ProductCard key={el.id} {...el} />)
+          pokemon.map(el => <ProductCard key={el.id} {...el} />)
         }
       </ProductList>
     </ProductContainer>

@@ -1,10 +1,13 @@
 import { Pokemon } from "../../pages/Products/types"
+import { usePokemon } from "../../stores/pokemon"
 import { BottomContent, Card, DescWrapper, ImgWrapper, TopContent } from "./ProductCardStyle"
 
-const ProductCard = ({ name, images, abilities, types }: Pokemon) => {
+const ProductCard = ({ id, name, images, abilities, types }: Pokemon) => {
   const [ mainImage ] = images
+  const { setPokemonSeletedID } = usePokemon()
+  const handleSelectedPokemon = () => setPokemonSeletedID(id)
   return (
-    <Card>
+    <Card onClick={handleSelectedPokemon}>
         <ImgWrapper>
           <img src={mainImage.url} alt="Main Image" />
         </ImgWrapper>
