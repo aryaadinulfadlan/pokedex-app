@@ -33,8 +33,12 @@ export const DescWrap = styled.div`
     & > h3 {
         font-size: ${FontSize10};
         text-transform: uppercase;
-        font-weight: bolder;
         width: 80%;
+        font-weight: 800;
+        background: linear-gradient(to right, #2f0070, #09dada);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     & > p {
         font-size: ${FontSize3};

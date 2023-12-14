@@ -86,23 +86,9 @@ const ProductsPage = () => {
     <ProductContainer>
       <ProductSearch />
       <ProductList>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {
+          pokemonList.map(el => <ProductCard key={el.id} {...el} />)
+        }
       </ProductList>
     </ProductContainer>
   )

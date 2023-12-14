@@ -12,7 +12,7 @@ export const ProductList = styled.div`
     background-color: hotpink;
     display: grid;
     gap: 1.5rem;
-    @media (min-width: 650px) {
+    @media (min-width: 600px) {
         grid-template-columns: repeat(2, 1fr);
     }
     @media (min-width: 900px) {
