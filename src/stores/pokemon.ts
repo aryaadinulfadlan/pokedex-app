@@ -3,16 +3,18 @@ import { Pokemon } from "../pages/Products/types"
 
 interface PokemonStore {
     pokemon: Pokemon[]
-    pokemonSelectedID: null | number,
+    pokemonSelectedID: null | number
     setPokemon: (data: Pokemon) => void
     setPokemonSeletedID: (id: number) => void
-    filteredOrSearchedPokemon: Pokemon[] | null
+    filteredOrSearchedPokemon: Pokemon[]
     handleFilterOrSearch: (keyword: string, type: string) => void
-    resetFilter: () => void
+    activeType: string 
+    setActiveType: (value: string) => void
+    term: string
 }
 
 interface PokemonTypes {
-    pokemonTypes: string[],
+    pokemonTypes: string[]
     setPokemonTypes: (data: string[]) => void
 }
 
@@ -27,27 +29,47 @@ export const usePokemon = create<PokemonStore>(set => ({
         ...state,
         pokemonSelectedID: id
     })),
-    filteredOrSearchedPokemon: null,
+    filteredOrSearchedPokemon: [],
     handleFilterOrSearch: (keyword: string, type: string) => set(state => {
         switch (type) {
             case 'filter':
                 return {
                     ...state,
-                    // filteredOrSearchedPokemon: state.pokemon.filter(pkm => pkm.types.includes(type))
+                    activeType: keyword,
+                    term: '',
+                    filteredOrSearchedPokemon: state.pokemon.filter(pkm => pkm.types.includes(keyword))
+                }
+            case 'filter_reset':
+                return {
+                    ...state,
+                    activeType: keyword,
+                    term: '',
+                    filteredOrSearchedPokemon: []
                 }
             case 'search':
                 return {
                     ...state,
+                    activeType: '',
+                    term: keyword,
                     filteredOrSearchedPokemon: state.pokemon.filter(pkm => pkm.name.toLowerCase().includes(keyword.trim().toLowerCase()))
+                }
+            case 'search_reset':
+                return {
+                    ...state,
+                    activeType: '',
+                    term: keyword,
+                    filteredOrSearchedPokemon: []
                 }
             default:
                 return { ...state };
         }
     }),
-    resetFilter: () => set(state => ({
+    activeType: '',
+    setActiveType: (value: string) => set(state => ({
         ...state,
-        filteredOrSearchedPokemon: null
+        activeType: value
     })),
+    term: '',
 }))
 
 export const usePokemonTypes = create<PokemonTypes>(set => ({

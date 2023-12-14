@@ -1,11 +1,22 @@
 import styled from "styled-components"
 import { FontSize3 } from "../GlobalStyles"
 import { FaSearch } from "react-icons/fa"
+import { usePokemon } from "../stores/pokemon"
 
 const ProductSearch = () => {
+  const { handleFilterOrSearch, term } = usePokemon()
+
+  const handleChangeTerm = (val: string) => {
+    if (val.trim().length > 0) {
+      handleFilterOrSearch(val, 'search')
+    } else {
+      handleFilterOrSearch(val, 'search_reset')
+    }
+  }
+
   return (
     <SearchWrapper>
-        <input type="text" placeholder='Search Pokemon Here..' />
+        <input type="text" placeholder='Search Pokemon Here..' value={term} onChange={e => handleChangeTerm(e.target.value)} />
         <FaSearch />
     </SearchWrapper>
   )

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FontSize5 } from "../../GlobalStyles";
 
 export const ProductContainer = styled.div`
     background-color: pink;
@@ -18,4 +19,9 @@ export const ProductList = styled.div`
     @media (min-width: 900px) {
         grid-template-columns: repeat(3, 1fr);
     }
+`
+export const DataNotFound = styled.div`
+    font-size: ${FontSize5};
+    font-weight: bold;
+    text-align: center;
 `

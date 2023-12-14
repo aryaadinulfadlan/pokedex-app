@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect } from "react"
 import styled from "styled-components"
 import { getPokemonTypes } from "../api/pokemon"
-import { usePokemonTypes } from "../stores/pokemon"
+import { usePokemon, usePokemonTypes } from "../stores/pokemon"
 
 type Result = {
     name: string
@@ -10,7 +10,7 @@ type Result = {
 
 const ProductFilter = () => {
   const { pokemonTypes, setPokemonTypes } = usePokemonTypes()
-  const [activeType, setActiveType] = useState('')
+  const { activeType, handleFilterOrSearch } = usePokemon()
 
   const getPokemonType = useCallback(async () => {
     try {
@@ -24,8 +24,8 @@ const ProductFilter = () => {
         alert('Something went wrong!')
     }
   }, [])
-  const handleActiveType = (typ: string) => setActiveType(typ)
-  const handleReset = () => setActiveType('')
+  const handleActiveType = (typ: string) => handleFilterOrSearch(typ, 'filter')
+  const handleReset = () => handleFilterOrSearch('', 'filter_reset')
 
   useEffect(() => {
     getPokemonType()

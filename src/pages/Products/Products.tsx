@@ -1,14 +1,14 @@
 import { useCallback, useEffect } from "react"
 import ProductCard from "../../components/ProductCard/ProductCard"
 import ProductSearch from "../../components/ProductSearch"
-import { ProductContainer, ProductList } from "./ProductStyle"
+import { DataNotFound, ProductContainer, ProductList } from "./ProductStyle"
 import { getPokemon, getPokemonList } from "../../api/pokemon"
 import { Data, Image, Pokemon, PokemonAbility, PokemonStats, PokemonType, Stats } from "./types"
 import ProductFilter from "../../components/ProductFilter"
 import { usePokemon } from "../../stores/pokemon"
 
 const ProductsPage = () => {
-  const { pokemon, filteredOrSearchedPokemon, pokemonSelectedID, setPokemon } = usePokemon()
+  const { pokemon, filteredOrSearchedPokemon, setPokemon, term, activeType } = usePokemon()
 
   const getData = useCallback(async () => {
     try {
@@ -83,16 +83,26 @@ const ProductsPage = () => {
     getData()
   }, [getData])
 
-  console.log({pokemon, pokemonSelectedID, filteredOrSearchedPokemon})
+  console.log({pokemon, term, activeType, filteredOrSearchedPokemon})
   return (
     <ProductContainer>
       <ProductSearch />
       <ProductFilter />
-      <ProductList>
-        {
-          pokemon.map(el => <ProductCard key={el.id} {...el} />)
-        }
-      </ProductList>
+      {
+        ((term.length > 0 || activeType.length > 0) && filteredOrSearchedPokemon.length === 0) ? (
+          <DataNotFound>No Pokemon Founded</DataNotFound>
+        ) : (
+          <ProductList>
+            {
+              filteredOrSearchedPokemon.length === 0 ? pokemon.map(el => (
+                <ProductCard key={el.id} {...el} />
+              )) : filteredOrSearchedPokemon.length > 0 && filteredOrSearchedPokemon.map(el => (
+                <ProductCard key={el.id} {...el} />
+              ))
+            }
+          </ProductList>
+        )
+      }
     </ProductContainer>
   )
 }
