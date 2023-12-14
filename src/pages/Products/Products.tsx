@@ -4,6 +4,7 @@ import ProductSearch from "../../components/ProductSearch"
 import { ProductContainer, ProductList } from "./ProductStyle"
 import { getPokemon, getPokemonList } from "../../api/pokemon"
 import { Data, Image, Pokemon, PokemonAbility, PokemonStats, PokemonType, Stats } from "./types"
+import ProductFilter from "../../components/ProductFilter"
 
 const ProductsPage = () => {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([])
@@ -85,6 +86,7 @@ const ProductsPage = () => {
   return (
     <ProductContainer>
       <ProductSearch />
+      <ProductFilter />
       <ProductList>
         {
           pokemonList.map(el => <ProductCard key={el.id} {...el} />)

@@ -9,3 +9,8 @@ export const getPokemon = (pokeID: string) => {
     const url = `pokemon/${pokeID}`
     return axiosClient.get(url)
 }
+
+export const getPokemonTypes = () => {
+    const url = `type`
+    return axiosClient.get(url)
+}
