@@ -8,17 +8,15 @@ import ProductFilter from "../../components/ProductFilter"
 import { usePokemon } from "../../stores/pokemon"
 import CustomLoaderAnimation from "../../components/CustomLoaderAnimation"
 
-const IDLE = 'idle'
 const PROCESS = 'process'
 const SUCCESS = 'success'
 const ERROR = 'error'
 const ProductsPage = () => {
   const { pokemon, filteredOrSearchedPokemon, setPokemon, term, activeType, pokemonReset } = usePokemon()
-  const [status, setStatus] = useState(IDLE)
+  const [status, setStatus] = useState(PROCESS)
 
   const getData = useCallback(async () => {
     pokemonReset()
-    setStatus(PROCESS)
     try {
       const { status, data } = await getPokemonList('100')
       if (status === 200) {
