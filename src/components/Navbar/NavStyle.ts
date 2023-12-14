@@ -5,6 +5,7 @@ export const Nav = styled.nav`
     position: sticky;
     top: 0;
     padding: 1rem;
+    z-index: 1;
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
 `
 export const NavWrapper = styled.div`

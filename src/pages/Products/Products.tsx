@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react"
+import { useCallback, useEffect, useState } from "react"
 import ProductCard from "../../components/ProductCard/ProductCard"
 import ProductSearch from "../../components/ProductSearch"
 import { DataNotFound, ProductContainer, ProductList } from "./ProductStyle"
@@ -6,22 +6,30 @@ import { getPokemon, getPokemonList } from "../../api/pokemon"
 import { Data, Image, Pokemon, PokemonAbility, PokemonStats, PokemonType, Stats } from "./types"
 import ProductFilter from "../../components/ProductFilter"
 import { usePokemon } from "../../stores/pokemon"
+import CustomLoaderAnimation from "../../components/CustomLoaderAnimation"
 
+const IDLE = 'idle'
+const PROCESS = 'process'
+const SUCCESS = 'success'
+const ERROR = 'error'
 const ProductsPage = () => {
   const { pokemon, filteredOrSearchedPokemon, setPokemon, term, activeType } = usePokemon()
+  const [status, setStatus] = useState(IDLE)
 
   const getData = useCallback(async () => {
+    setStatus(PROCESS)
     try {
       const { status, data } = await getPokemonList('100')
       if (status === 200) {
-        // console.log({data})
         const urls = data.results.map((el: Data) => el.url).map((url: string) => url.slice(34))
         getPokemonData(urls)
       } else {
         alert('An error occured')
+        setStatus(ERROR)
       }
     } catch (err) {
       alert('Something went wrong!')
+      setStatus(ERROR)
     }
   }, [])
 
@@ -72,10 +80,13 @@ const ProductsPage = () => {
           setPokemon(newData)
         } else {
           alert('An error occured')
+          setStatus(ERROR)
         }
       })
+      setStatus(SUCCESS)
     } catch (err) {
       alert('Something went wrong!')
+      setStatus(ERROR)
     }
   }
 
@@ -83,7 +94,7 @@ const ProductsPage = () => {
     getData()
   }, [getData])
 
-  console.log({pokemon, term, activeType, filteredOrSearchedPokemon})
+  // console.log({pokemon, term, activeType, filteredOrSearchedPokemon})
   return (
     <ProductContainer>
       <ProductSearch />
@@ -102,6 +113,12 @@ const ProductsPage = () => {
             }
           </ProductList>
         )
+      }
+      {
+        status === PROCESS && <CustomLoaderAnimation />
+      }
+      {
+        status === ERROR && <DataNotFound>An Error Occured!</DataNotFound>
       }
     </ProductContainer>
   )
