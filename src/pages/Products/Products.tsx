@@ -13,10 +13,11 @@ const PROCESS = 'process'
 const SUCCESS = 'success'
 const ERROR = 'error'
 const ProductsPage = () => {
-  const { pokemon, filteredOrSearchedPokemon, setPokemon, term, activeType } = usePokemon()
+  const { pokemon, filteredOrSearchedPokemon, setPokemon, term, activeType, pokemonReset } = usePokemon()
   const [status, setStatus] = useState(IDLE)
 
   const getData = useCallback(async () => {
+    pokemonReset()
     setStatus(PROCESS)
     try {
       const { status, data } = await getPokemonList('100')
@@ -94,7 +95,7 @@ const ProductsPage = () => {
     getData()
   }, [getData])
 
-  // console.log({pokemon, term, activeType, filteredOrSearchedPokemon})
+  // console.log({pokemon})
   return (
     <ProductContainer>
       <ProductSearch />

@@ -1,11 +1,12 @@
+import { useNavigate } from "react-router-dom"
 import { Pokemon } from "../../pages/Products/types"
-import { usePokemon } from "../../stores/pokemon"
 import { BottomContent, Card, DescWrapper, ImageBackdrop, ImgWrapper, TopContent } from "./ProductCardStyle"
 
 const ProductCard = ({ id, name, images, abilities, types }: Pokemon) => {
   const [ mainImage ] = images
-  const { setPokemonSeletedID } = usePokemon()
-  const handleSelectedPokemon = () => setPokemonSeletedID(id)
+  const navigate = useNavigate()
+  const handleSelectedPokemon = () => navigate(`/product/${id}`)
+  
   return (
     <Card onClick={handleSelectedPokemon}>
         <ImgWrapper>
