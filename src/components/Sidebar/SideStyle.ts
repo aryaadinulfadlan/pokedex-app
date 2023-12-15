@@ -49,18 +49,28 @@ export const NavMenu = styled.ul`
 export const NavItem = styled.li`
     font-weight: bold;
     cursor: pointer;
+    position: relative;
+    &::after {
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        background-color: #7983d9;
+        height: 4px;
+        border-radius: 5px;
+        content: '';
+        transition: width 500ms ease;
+    }
+    &:has(> .active)::after {
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120%;
+        background-color: #7983d9;
+        height: 4px;
+        border-radius: 5px;
+        content: '';
+    }
 `
-// export const Menu = styled.ul`
-//   display: grid;
-//   width: 100%;
-//   gap: 2rem;
-//   justify-items: center;
-//   margin-top: -7rem;
-//   font-weight: bold;
-//   @media (min-width: 800px) {
-//       grid-template-columns: repeat(5, auto);
-//       margin-top: initial;
-//       align-items: center;
-//       gap: 1rem;
-//   }
-// `
