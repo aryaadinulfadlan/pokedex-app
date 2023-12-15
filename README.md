@@ -1,18 +1,18 @@
 # This is Pokedex Web Application made with ReactJS TypeScript.
-##### Using ReactJS as UI library
-##### TypeScript for JavaScript static typing layer
-##### State Management with Zustand
-##### Using CSS in JS for styling solution (because I love CSS)
-##### Good separation of logical and UI layers
-##### Reusable UI Components
-##### Routing with React Router DOM
-##### Responsive mobile friendly
-##### Much more react hooks are used (include Custom Hook)
-##### Show list of pokemon with Infinite List
-##### Display lists of pokemon and pokemon detail
-##### Search pokemon by name or filter pokemon by their types
-##### "Not Found" Route implemented
-##### Unit Test (SOON)
+#### Using ReactJS as UI library
+#### TypeScript for JavaScript static typing layer
+#### State Management with Zustand
+#### Using CSS in JS for styling solution (because I love CSS)
+#### Good separation of logical and UI layers
+#### Reusable UI Components
+#### Routing with React Router DOM
+#### Responsive mobile friendly
+#### Much more react hooks are used (include Custom Hook)
+#### Show list of pokemon with Infinite List
+#### Display lists of pokemon and pokemon detail
+#### Search pokemon by name or filter pokemon by their types
+#### "Not Found" Route implemented
+#### Unit Test (SOON)
 
 ## How To Clone (Run Locally) ?
 1. Clone Repository 
