@@ -89,7 +89,6 @@ export default function useInfinitePokemon(offset: string) {
         const urls = results.map((el: Data) => el.url).map((url: string) => url.slice(34))
         getPokemonData(urls)
         setHasMore(next ? true : false)
-        // li navlink active
       } else {
         alert('An error occured')
         setStatus(ERROR)

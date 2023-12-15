@@ -6,6 +6,7 @@ import CustomLoaderAnimation from "../../components/CustomLoaderAnimation"
 import { getPokemon } from "../../api/pokemon"
 import { FaEye, FaTimes } from "react-icons/fa"
 import { BottomContent } from "../../components/ProductCard/ProductCardStyle"
+import { createPortal } from "react-dom"
 
 const ProductDetailPage = () => {
   const { id } = useParams()
@@ -139,7 +140,7 @@ const ProductDetailPage = () => {
         </Description>
       </DetailContainer>
       {
-        modal && (
+        modal && createPortal(
           <ModalContainer>
             <ModalContent>
               <IconWrap onClick={handleModal}>
@@ -147,7 +148,7 @@ const ProductDetailPage = () => {
               </IconWrap>
               <img src={selectedImage} alt="Current Image" />
             </ModalContent>
-          </ModalContainer>
+          </ModalContainer>, document.body
         )
       }
     </>

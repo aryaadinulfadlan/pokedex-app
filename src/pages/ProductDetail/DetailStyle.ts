@@ -136,7 +136,7 @@ export const TopContent = styled.div`
   }
 `
 export const ModalContainer = styled.div`
-  position: fixed;
+  position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;

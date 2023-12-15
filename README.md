@@ -12,7 +12,6 @@
 #### Display lists of pokemon and pokemon detail
 #### Search pokemon by name or filter pokemon by their types
 #### "Not Found" Route implemented
-#### Unit Test (SOON)
 
 ## How To Clone (Run Locally) ?
 1. Clone Repository 
