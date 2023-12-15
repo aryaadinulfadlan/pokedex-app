@@ -2,13 +2,16 @@ import { useNavigate } from "react-router-dom"
 import { Pokemon } from "../../pages/Products/types"
 import { BottomContent, Card, DescWrapper, ImageBackdrop, ImgWrapper, TopContent } from "./ProductCardStyle"
 
-const ProductCard = ({ id, name, images, abilities, types }: Pokemon) => {
+type Props = Pokemon & {
+  refElement?: (node: HTMLDivElement) => void
+}
+const ProductCard = ({ id, name, images, abilities, types, refElement }: Props) => {
   const [ mainImage ] = images
   const navigate = useNavigate()
   const handleSelectedPokemon = () => navigate(`/product/${id}`)
   
   return (
-    <Card onClick={handleSelectedPokemon}>
+    <Card onClick={handleSelectedPokemon} ref={refElement ? refElement : null}>
         <ImgWrapper>
           <img src={mainImage.url} alt="Main Image" />
           <ImageBackdrop />
