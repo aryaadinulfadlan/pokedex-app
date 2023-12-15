@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FontSize2, FontSize6 } from "../../GlobalStyles";
+import { FontSize4, FontSize6, LabelFontSize, TextFontSize } from "../../GlobalStyles";
 
 export const Card = styled.div`
     border-radius: 10px;
@@ -64,13 +64,16 @@ export const TopContent = styled.div`
         list-style: decimal inside;
         padding-left: 10px;
         font-weight: 600;
+        text-transform: capitalize;
+        font-size: ${TextFontSize};
     }   
     span {
         font-weight: 600;
+        font-size: ${TextFontSize};
     }
     & > h3 {
         text-transform: capitalize;
-        font-size: ${FontSize2};
+        font-size: ${FontSize4};
     }
     display: flex;
     flex-direction: column;
@@ -89,5 +92,6 @@ export const BottomContent = styled.div`
         border-radius: 1rem;
         font-weight: bold;
         text-transform: capitalize;
+        font-size: ${LabelFontSize};
     }
 `

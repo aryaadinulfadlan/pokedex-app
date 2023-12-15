@@ -1,10 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { Description, DetailContainer, IconWrap, ImageWrap, Img, ImgOverlay, ImgSelected, ModalContainer, ModalContent, SelectImage, SelectedImage } from "./DetailStyle"
-import { useCallback, useEffect, useState } from "react"
+import { Description, DetailContainer, IconWrap, ImageWrap, Img, ImgOverlay, ImgSelected, ModalContainer, ModalContent, SelectImage, SelectedImage, TopContent } from "./DetailStyle"
+import { Fragment, useCallback, useEffect, useState } from "react"
 import { Image, Pokemon, PokemonAbility, PokemonStats, PokemonType, Stats } from "../Products/types"
 import CustomLoaderAnimation from "../../components/CustomLoaderAnimation"
 import { getPokemon } from "../../api/pokemon"
 import { FaEye, FaTimes } from "react-icons/fa"
+import { BottomContent } from "../../components/ProductCard/ProductCardStyle"
 
 const ProductDetailPage = () => {
   const { id } = useParams()
@@ -78,6 +79,7 @@ const ProductDetailPage = () => {
   if (loading) {
     return <CustomLoaderAnimation />
   }
+
   return (
     <>
       <DetailContainer>
@@ -103,7 +105,37 @@ const ProductDetailPage = () => {
           </SelectImage>
         </ImageWrap>
         <Description>
-          desaaaaaaaaaaqqqq
+          <TopContent>
+            <h3>{selectedPokemon.name}</h3>
+            <div className="abilities">
+              <span>Abilities:</span>
+              <ol>
+                {
+                  selectedPokemon.abilities.map(el => <li key={el}>{el}</li>)
+                }
+              </ol>
+            </div>
+            <div className="info">
+              <span>Stats</span>
+              <div className="info_stats">
+                {
+                  selectedPokemon.stats.map(el => (
+                    <Fragment key={el.name_stat}>
+                      <p>{el.name_stat.replace('-', ' ')}</p>
+                      <p>:</p>
+                      <p>{el.base_stat}</p>
+                    </Fragment>
+                  ))
+                }
+              </div>
+            </div>
+            <hr />
+          </TopContent>
+          <BottomContent className="justify-end">
+            {
+              selectedPokemon.types.map(el => <span key={el}>{el}</span>)
+            }
+          </BottomContent>
         </Description>
       </DetailContainer>
       {

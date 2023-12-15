@@ -36,9 +36,12 @@ export const GlobalStyles = createGlobalStyle`
     }
 `
 
+export const LabelFontSize = 'clamp(0.75rem, 0.6981rem + 0.2308vw, 0.9rem)'
+export const TextFontSize = 'clamp(0.85rem, 0.7981rem + 0.2308vw, 1rem)'
 export const FontSize1 = 'clamp(0.9rem, 0.7962rem + 0.4615vw, 1.2rem)'
 export const FontSize2 = 'clamp(0.9rem, 0.7615rem + 0.6154vw, 1.3rem)'
 export const FontSize3 = 'clamp(0.9rem, 0.7269rem + 0.7692vw, 1.4rem)'
+export const FontSize4 = 'clamp(1rem, 0.8962rem + 0.4615vw, 1.3rem)'
 export const FontSize5 = 'clamp(1rem, 0.7231rem + 1.2308vw, 1.8rem)'
 export const FontSize6 = 'clamp(1.3rem, 0.7115rem + 2.6154vw, 3rem)'
 export const FontSize9 = 'clamp(1.2rem, 0.9231rem + 1.2308vw, 2rem)'

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { FontSize5 } from '../../GlobalStyles';
+import { FontSize4, FontSize5, TextFontSize } from '../../GlobalStyles';
 
 type ImgProps = {
     selected: boolean
@@ -9,36 +9,25 @@ export const DetailContainer = styled.div`
     border-radius: 1rem;
     max-width: 350px;
     width: 100%;
-    margin: 3rem auto 0;
+    margin: 2.5rem auto 0;
     padding: 1rem;
-    /* padding: 3rem 4px 2vw; */
     display: grid;
     grid-template-rows: 300px auto;
     gap: 2rem;
-    /* 
-    min-height: calc(100vh - 3rem);
     @media (min-width: 600px) {
-        max-width: 550px;
-        grid-template-rows: 1fr 1fr;
+        max-width: 400px;
+        grid-template-rows: 350px auto;
     }
-    @media (min-width: 900px) {
+    @media (min-width: 850px) {
         grid-template-rows: 1fr;
         grid-template-columns: 1fr 1fr;
-        max-width: 1100px;
-    } */
+        max-width: 900px;
+    }
 `
 export const ImageWrap = styled.div`
-  /* background-color: red; */
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 4.5fr 1fr;
   gap: 1rem;
-  /* 
-  border-radius: 7px 7px 0 0;
-  overflow: hidden;
-  padding: 5px;
-  @media (min-width: 900px) {
-    height: 400px;
-  } */
 `
 export const ImgOverlay = styled.div`
     position: absolute;
@@ -64,9 +53,6 @@ export const ImgOverlay = styled.div`
     }
 `
 export const SelectedImage = styled.div`
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     background-color: #eee;
     border-radius: 10px;
     padding: 1rem;
@@ -75,8 +61,6 @@ export const SelectedImage = styled.div`
         visibility: visible;
         opacity: 1;
     }
-    /* align-items: center; */
-    /* padding: 1rem; */
 `
 export const ImgSelected = styled.div`
     height: 100%;
@@ -90,35 +74,66 @@ export const ImgSelected = styled.div`
     }
 `
 export const SelectImage = styled.div`
-    /* background-color: blue; */
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 1fr;
     gap: 10px;
 `
 export const Img = styled.div<ImgProps>`
     background-color: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px;
     border-radius: 10px;
     cursor: pointer;
-    border: ${({ selected }) => selected ? '2px solid #a28fbe' : '2px solid white'};
+    border: ${({ selected }) => selected ? '2px solid #495fba' : '2px solid white'};
+    position: relative;
     img {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
 `
 export const Description = styled.div`
-  background-color: lime;
-  /* display: flex;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  & > .justify-end {
+    justify-content: flex-end;
+  }
+`
+export const TopContent = styled.div`
+  display: flex;
   flex-direction: column;
   gap: 10px;
-  & > .price {
-    font-weight: bold;
-  } */
+  ol {
+      list-style: decimal inside;
+      padding-left: 10px;
+      font-weight: 600;
+      text-transform: capitalize;
+      font-size: ${TextFontSize};
+  }   
+  span, p {
+      font-weight: 600;
+      font-size: ${TextFontSize};
+  }
+  & > h3 {
+      text-transform: capitalize;
+      font-size: ${FontSize4};
+  }
+  .abilities {
+
+  }
+  .info {
+    .info_stats {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      justify-content: start;
+      gap: 6px 1rem;
+      padding-left: 10px;
+      p {
+        text-transform: capitalize;
+      }
+    }
+  }
 `
 export const ModalContainer = styled.div`
   position: fixed;
