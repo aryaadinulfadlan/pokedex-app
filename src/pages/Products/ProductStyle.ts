@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FontSize5 } from "../../GlobalStyles";
 
 export const ProductContainer = styled.div`
-    background-color: pink;
+    /* background-color: pink; */
     height: 100%;
     max-width: 900px;
     width: 100%;
@@ -10,7 +10,7 @@ export const ProductContainer = styled.div`
     padding: 3rem 0 2rem;
 `
 export const ProductList = styled.div`
-    background-color: hotpink;
+    /* background-color: hotpink; */
     display: grid;
     gap: 1.5rem;
     @media (min-width: 600px) {

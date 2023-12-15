@@ -44,7 +44,7 @@ const ProductFilter = () => {
 export default ProductFilter
 
 const FilterWrap = styled.div`
-    background-color: plum;
+    /* background-color: plum; */
     margin-bottom: 3rem;
     display: flex;
     flex-wrap: wrap;
