@@ -3,9 +3,7 @@ import { Pokemon } from "../pages/Products/types"
 
 interface PokemonStore {
     pokemon: Pokemon[]
-    // pokemonSelectedID: null | number
     setPokemon: (data: Pokemon) => void
-    // setPokemonSeletedID: (id: number) => void
     filteredOrSearchedPokemon: Pokemon[]
     handleFilterOrSearch: (keyword: string, type: string) => void
     activeType: string 
@@ -21,15 +19,10 @@ interface PokemonTypes {
 
 export const usePokemon = create<PokemonStore>(set => ({
     pokemon: [],
-    // pokemonSelectedID: null,
     setPokemon: (data: Pokemon) => set(state => ({
         ...state,
         pokemon: [ ...state.pokemon, data ]
     })),
-    // setPokemonSeletedID: (id: number) => set(state => ({
-    //     ...state,
-    //     pokemonSelectedID: id
-    // })),
     filteredOrSearchedPokemon: [],
     handleFilterOrSearch: (keyword: string, type: string) => set(state => {
         switch (type) {
