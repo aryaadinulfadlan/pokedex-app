@@ -80,6 +80,7 @@ export default function useInfinitePokemon(offset: string) {
   }, [])
 
   const getData = useCallback(async () => {
+    setStatus(PROCESS)
     if (!hasMore) {
       pokemonReset()
     }
